@@ -1,6 +1,8 @@
 # Kubernetes in Action  
- ![cover](./asserts/kubernetes_in_action/cover.jpg)
+![cover](./asserts/kubernetes_in_action/cover.jpg)
+
 个人评分: ⭐️⭐️⭐️  
+
 全面但不太底层。适合了解和入门。 
 
 
