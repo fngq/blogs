@@ -1,5 +1,5 @@
 # Kubernetes in Action  
-![cover](./asserts/kubernetes_in_action/cover.jpg)
+![cover](../asserts/kubernetes_in_action/cover.jpg)
 
 个人评分: ⭐️⭐️⭐️  
 
@@ -123,9 +123,9 @@ kubelet功能主要是创建和监控。创建包括向API Server注册Node资�
 
 最初版本是使用userspace模式代理，在后面的版本中换成了iptables模式代理
 
-![Untitled](./asserts/kubernetes_in_action/Untitled.png)
+![Untitled](../asserts/kubernetes_in_action/Untitled.png)
 
-![Untitled](./asserts/kubernetes_in_action/Untitled%201.png)
+![Untitled](../asserts/kubernetes_in_action/Untitled%201.png)
 
 两种模式的主要区别是：数据包是否会传递给kube-proxy，是否必须在用户空间处理，或者数据包只会在内核处理（内核空间）。这对性能有巨大的影响。
 
@@ -141,7 +141,7 @@ k8s DNS通过kube-dns服务暴露给集群内的Pod，kube-dns会监听所有的
 
 ### 事件链
 
-![Untitled](./asserts/kubernetes_in_action/Untitled%202.png)
+![Untitled](../asserts/kubernetes_in_action/Untitled%202.png)
 
 上图显示了通过Deployment部署应用的事件过程和各个组件的分工和参与的时机。
 
@@ -169,13 +169,13 @@ Node内的Pod间通信
 
 在Host内，各个Pod的veth连接到同一个Bridge网桥上，这样同一个Host内的Pod即可通过这个网桥通信。
 
-![Untitled](./asserts/kubernetes_in_action/Untitled%203.png)
+![Untitled](../asserts/kubernetes_in_action/Untitled%203.png)
 
 跨Node的Pod间通信
 
 Node间的通信要做的就是将Node上的网桥Bridge联系在一起。因为要保证Pod的IP在整个集群中都是唯一的，所以集群中的Node使用的IP段不能重叠。
 
-![Untitled](./asserts/kubernetes_in_action/Untitled%204.png)
+![Untitled](../asserts/kubernetes_in_action/Untitled%204.png)
 
 以上这种模式只能在两台主机在同一个交换机下才能实现，中间不能有别的路由器。对于现实中的复杂网络环境，需要用Software Defined Network (SDN)软件定义网络来实现Node间的通信。
 
@@ -189,7 +189,7 @@ K8S定义了Software Defined Network (SDN)容器网络接口(Container Network I
 
 kube-proxy除了会监听Service变动事件外还会监听Endpoint的变动事件，Endpoint代表了Service后面提供真实服务的Pod或者外部服务的地址，即IP和端口。
 
-![Untitled](./asserts/kubernetes_in_action/Untitled%205.png)
+![Untitled](../asserts/kubernetes_in_action/Untitled%205.png)
 
 在Service和Endpoint变动的时候kube-proxy都会修改iptable中的规则，使得发送到Service的虚拟IP的包可以被正确路由到对应的Pod的IP上。
 
@@ -207,7 +207,7 @@ etcd一般会在不同的Node上启动多个实例组成一个集群，一般来
 
 API Server可以看作是无状态的，它也会启动多个实例，通常一个API Server实例对应一个etcd实例。但是API Server需要在前面加一个负载均衡。（因为只有API Server访问etcd，所以同时也是etcd的负载均衡）
 
-![Untitled](./asserts/kubernetes_in_action/Untitled%206.png)
+![Untitled](../asserts/kubernetes_in_action/Untitled%206.png)
 
 其它的组件，Contoller Manager和Scheduler也会启动多个实例，但是因为它们都会监听集群事件并修改集群的状态，所以会有竞争关系。因此在启动多个实例时也只有一个领导者实例是活动的，其它的实例处于就绪状态，当活动实例下线，处于就绪状态的实例会选举出一个新的领导者来接替之前的工作。
 
@@ -245,7 +245,7 @@ K8S默认使用RBAC插件来管理权限，每个用户可以被分配多个角�
 
 在K8S中通过4种资源来实现RBAC，分别是Role,ClusterRole和RoleBinding,ClusterRoleBinding。
 
-![Untitled](./asserts/kubernetes_in_action/Untitled%207.png)
+![Untitled](../asserts/kubernetes_in_action/Untitled%207.png)
 
 Role角色决定了什么能做，比如哪些资源和哪些操作可以作。
 
@@ -271,11 +271,11 @@ Container也可以将spec.containers.ports属性设置成hostPort来直接绑定
 
 hostNetwork、hostPort、NodePort3种方式络端口使用的区别如下:
 
-![**hostNetwork属性会使用host上的网卡**](./asserts/kubernetes_in_action/Untitled%208.png)
+![**hostNetwork属性会使用host上的网卡**](../asserts/kubernetes_in_action/Untitled%208.png)
 
 **hostNetwork属性会使用host上的网卡**
 
-![hostPort只会在运行对应Pod的Node上绑定对应端口，NodePort Service会在所有相关Node上绑定对应端口](./asserts/kubernetes_in_action/Untitled%209.png)
+![hostPort只会在运行对应Pod的Node上绑定对应端口，NodePort Service会在所有相关Node上绑定对应端口](../asserts/kubernetes_in_action/Untitled%209.png)
 
 hostPort只会在运行对应Pod的Node上绑定对应端口，NodePort Service会在所有相关Node上绑定对应端口
 
@@ -538,7 +538,7 @@ pod 亲和性是通过lableSelector来指定目标pod的，podAffinity表明与�
 
 ## k8s应用开发最佳实践
 
-![E219614B-9D27-4995-805D-1EE73E9BAB13.jpeg](./asserts/kubernetes_in_action/E219614B-9D27-4995-805D-1EE73E9BAB13.jpeg)
+![E219614B-9D27-4995-805D-1EE73E9BAB13.jpeg](../asserts/kubernetes_in_action/E219614B-9D27-4995-805D-1EE73E9BAB13.jpeg)
 
 上图是一个k8s应用的全景图
 
@@ -610,7 +610,7 @@ Pod的关闭是从API Server收到一个删除请求开始的。当收到请求�
 
 发送SIGTERM到强制杀掉主进程之间的等待时间默认是30秒，可以通过terminationGracePeriodSeconds字段配置此时间。
 
-![7B7CE992-B509-426C-B64D-AC88A8328B4E.jpeg](./asserts/kubernetes_in_action/7B7CE992-B509-426C-B64D-AC88A8328B4E.jpeg)
+![7B7CE992-B509-426C-B64D-AC88A8328B4E.jpeg](../asserts/kubernetes_in_action/7B7CE992-B509-426C-B64D-AC88A8328B4E.jpeg)
 
 事实上即使以上所有的措施都没办法保证pod的优雅退出。我们说优雅退出主要包含两方面，释放资源和保存状态。释放资源比较容易，保存状态的时间是无法准确预估的。
 
@@ -618,7 +618,7 @@ Pod的关闭是从API Server收到一个删除请求开始的。当收到请求�
 
 ### 保证关闭Pod时服务可用
 
-![BD8EEE17-8EB9-4554-9116-FC8391F36B66.jpeg](./asserts/kubernetes_in_action/BD8EEE17-8EB9-4554-9116-FC8391F36B66.jpeg)
+![BD8EEE17-8EB9-4554-9116-FC8391F36B66.jpeg](../asserts/kubernetes_in_action/BD8EEE17-8EB9-4554-9116-FC8391F36B66.jpeg)
 
 当一个pod被删除时的事件流程如图。
 
