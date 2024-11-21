@@ -1,4 +1,9 @@
 # Kubernetes in Action  
+date: "2024-11-09T16:22:25+08:00"
+title: "Kubernetes in Action"
+tags: ["k8s","Kubernetes","tech"]
+categories: ["tech"]
+
 ![cover](../asserts/kubernetes_in_action/cover.jpg)
 
 个人评分: ⭐️⭐️⭐️  

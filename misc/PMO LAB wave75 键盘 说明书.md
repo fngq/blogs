@@ -1,4 +1,9 @@
 # PMO LAB wave75键盘 使用指南 电子版
+date: "2024-11-19T14:24:00+08:00"
+title: "PMO LAB wave75键盘 使用指南 电子版"
+tags: ["keyboard","wave75","misc"]
+categories: ["misc"]
+
 ## 1. 开关
 键盘开关隐藏在键盘的`Caps Lock`键帽下方，需要拔出键帽才能看到并操作。
 
